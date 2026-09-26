@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  --color-bg: #0b0d10;
+  --color-surface: #12151b;
+  --color-raised: #171b22;
+  --color-line: #222832;
+  --color-line-soft: #1b2027;
+
+  --color-fg: #e8ebf0;
+  --color-mut: #8b94a3;
+  --color-faint: #5c6572;
+
+  --color-mint: #10b981;
+  --color-mint-dim: #0c2b22;
+  --color-amber: #f5a623;
+  --color-amber-dim: #2b2311;
+  --color-crimson: #f05b4c;
+  --color-crimson-dim: #2b1615;
+  --color-sky: #4d9fff;
+  --color-sky-dim: #101f33;
+
+  --animate-rise: rise 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-fade: fade 0.2s ease-out;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Tabular numerals for money/metrics — never jitter. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-mint) 30%, transparent);
+}
+
+/* Slim, unobtrusive scrollbars. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Safe-area for notched phones (bottom nav). */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}

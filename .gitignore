@@ -1,0 +1,14 @@
+# Go
+/paygatemeapp
+*.exe
+
+# Frontend
+web/node_modules/
+web/dist/
+static/dist/
+
+# Env
+.env
+
+# OS
+.DS_Store
