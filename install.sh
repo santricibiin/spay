@@ -165,6 +165,13 @@ log "Frontend built"
 log "Build backend..."
 cd "$APP_DIR"
 export PATH="/usr/local/go/bin:$PATH"
+export GOPATH="${GOPATH:-$HOME/go}"
+export PATH="$GOPATH/bin:$PATH"
+
+# Ensure replace directive is removed (use remote module)
+sed -i '/^replace /d' go.mod
+
+go mod tidy
 go build -o paygatemeapp ./cmd/server
 log "Backend built: ${APP_DIR}/paygatemeapp"
 
